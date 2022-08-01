@@ -14,21 +14,38 @@ router.get('/register', function(req, res, next) {
 
 // register a login
 router.post("/register", (req, res, next) => {
-    let { email, password } = req.body;
-    User.distinct("email", (err, allEmail) => {
-        if (err) return next(err);
-        if (allEmail.includes(email)) {
-            req.flash("error", "email already exists!");
-            res.redirect("/users/register");
-        } else if (password.length < 4) {
-            req.flash("password_err", "password should be greater than 4 characters");
-            res.redirect("/users/register");
-        } else {
-            User.create(req.body, (err, user) => {
-                if (err) return next(err);
-                res.redirect("/users/login");
-            })
+    // Mine way of handling flash message (considered not an optimal way in a longer run)
+
+    // let { email, password } = req.body;
+    // User.distinct("email", (err, allEmail) => {
+    //     if (err) return next(err);
+    //     if (allEmail.includes(email)) {
+    //         req.flash("error", "email already exists!");
+    //         res.redirect("/users/register");
+    //     } else if (password.length < 4) {
+    //         req.flash("password_err", "password should be greater than 4 characters");
+    //         res.redirect("/users/register");
+    //     } else {
+    //         User.create(req.body, (err, user) => {
+    //             if (err) return next(err);
+    //             res.redirect("/users/login");
+    //         })
+    //     }
+    // })
+
+    User.create(req.body, (err, user) => {
+        if (err) {
+            if (err.code === 11000) {
+                req.flash("error", "email already exists!");
+                return res.redirect("/users/register");
+            }
+            if (err.name === "ValidationError") {
+                req.flash("password_err", err.message);
+                return res.redirect("/users/register");
+            }
+            return res.json({ err });
         }
+        return res.redirect("/users/login");
     })
 
 });
@@ -71,7 +88,6 @@ router.post("/login", (req, res, next) => {
 
 router.get("/logout", (req, res, next) => {
     req.session.destroy();
-    res.clearCookie("connect.sid");
     res.redirect("/users/login");
 })
 
