@@ -15,4 +15,4 @@ Add flash messages for:-
 - if no email, password is passed to login router
 - redirect to login page with an appropriate flash message
 
-Implement logout for loggd in users
+Implement logout for logged in users
