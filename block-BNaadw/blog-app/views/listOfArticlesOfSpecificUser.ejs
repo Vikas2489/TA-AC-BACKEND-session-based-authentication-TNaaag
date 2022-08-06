@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>List Of Articles</title>
+</head>
+
+<body>
+    <h1>All the articles are given below:-</h1>
+    <% articles.forEach((article)=>{%>
+        <h2>
+            <%=article.title%>
+        </h2>
+        <p>
+            <%= article.description%>
+        </p>
+        <a href="/articles/<%=article.slug%>">Read More....</a>
+        <%})%>
+            <hr>
+            <a class="links" href="/users/articles/new">Add article</a>
+</body>
+
+</html>
