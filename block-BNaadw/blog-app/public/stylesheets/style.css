@@ -1,0 +1,36 @@
+body {
+    padding: 50px;
+    font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00b7ff;
+}
+
+input {
+    display: block;
+    padding: 0.4rem;
+    border-radius: 0.4rem;
+    margin: 1rem 0;
+    border: 1px solid black;
+}
+
+.red {
+    color: red;
+}
+
+.links {
+    color: white;
+    background-color: black;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+}
+
+.red-bg {
+    background-color: red;
+}
+
+hr {
+    margin-bottom: 2rem;
+}

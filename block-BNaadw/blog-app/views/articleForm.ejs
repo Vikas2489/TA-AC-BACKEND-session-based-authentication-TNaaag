@@ -1,0 +1,12 @@
+<%- include('partials/header') -%>
+
+    <body>
+        <h1>Fill up the form to post an article:-</h1>
+        <form action="/users/articles/<%=loggedInUserId%>" method="post">
+            <input type="text" name="title" placeholder="Add title">
+            <input type="text" name="description" placeholder="Add description">
+            <input type="text" name="author" placeholder="Add author">
+            <input type="submit">
+        </form>
+    </body>
+    <%- include('partials/footer') -%>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Single Article Detail</title>
+</head>
+
+<body>
+    <h1>
+        <%=article.title%>
+    </h1>
+    <p>
+        <%=article.description%>
+    </p>
+    <h2>
+        <%=article.author%>
+    </h2>
+    <p>
+        <%=article.likes%>
+    </p>
+    <a href="/articles/<%=article.slug%>/likes" class="red-bg links">Like</a>
+    <a href="/articles/<%=article.slug%>/edit" class=" links">edit</a>
+
+    <form action="/articles/<%=article.id%>/comment" method="post">
+        <input type="text" placeholder="Add comment" name="comment">
+        <input type="submit" value="Add Comment">
+    </form>
+    <hr>
+    <%article.comments.forEach(comments=>{%>
+        <p>
+            <%=comments.comment%>
+        </p>
+        <p>
+            <%=comments.likes%>
+        </p>
+        <a href="/articles/<%=comments.id%>/comments/like" class="red-bg links">Like</a>
+        <a href="/articles/<%=comments.id%>/comments/edit" class="red-bg links">Edit</a>
+        <a href="/articles/<%=comments.id%>/comments/delete" class="links">Delete</a>
+        <%})%>
+            <hr>
+</body>
+
+</html>
