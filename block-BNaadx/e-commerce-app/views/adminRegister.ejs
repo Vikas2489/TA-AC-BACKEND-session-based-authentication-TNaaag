@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Admin Register Form</title>
+</head>
+
+<body>
+    <div>
+        <a class="block" href="/admin/new">Register As an admin</a>
+        <a class="block" href="/admin/login">Login As an admin</a>
+    </div>
+    <h1>Fill up the form to register yourself as an admin:-</h1>
+    <form action="/admin" method="post">
+        <% if(error) {%>
+            <span class="red">
+                <%=error%>
+            </span>
+            <%}%>
+                <input type="text" placeholder="Add name" name="name">
+                <input type="email" placeholder="Add email" name="email">
+                <input type="number" placeholder="Add age" name="age">
+                <input type="text" placeholder="Add city" name="city">
+                <input type="password" placeholder="Add password" name="password">
+                <input type="submit" value="Register">
+    </form>
+</body>
+
+</html>
