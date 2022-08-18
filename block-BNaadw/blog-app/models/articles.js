@@ -18,7 +18,7 @@ var articleSchema = new Schema({
 
 articleSchema.pre("save", function(next) {
     if (this.title && this.isModified("title")) {
-        this.slug = slugger(this.title);
+        this.slug = slugger(this.title) + Date.now();
         return next();
     } else {
         return next();
